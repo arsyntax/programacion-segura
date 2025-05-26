@@ -1,0 +1,16 @@
+.root{
+
+    --color_primario: #003366;
+    --color_secundario: #245324;
+
+
+}
+
+.background{
+
+    grid-row: end;
+    background-color: #f0eae0;
+    width: 100%;
+    padding: 50%,10px;
+    
+}
