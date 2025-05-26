@@ -1,0 +1,96 @@
+{
+    "summary": {
+        "title": "Modelo de Amenazas - App Pr\u00e9stamos Financieros",
+        "owner": "Grupo Universitario",
+        "description": "Aplicaci\u00f3n web para simulaci\u00f3n, solicitud y procesamiento de pr\u00e9stamos financieros.",
+        "contributors": [
+            "Estudiante"
+        ],
+        "diagrams": [
+            "main"
+        ]
+    },
+    "detail": {
+        "main": {
+            "diagramType": "DFD",
+            "nodes": [
+                {
+                    "id": "1",
+                    "name": "Usuario",
+                    "type": "ExternalEntity",
+                    "bounds": {
+                        "x": 50,
+                        "y": 100,
+                        "height": 50,
+                        "width": 100
+                    }
+                },
+                {
+                    "id": "2",
+                    "name": "API CMF Chile",
+                    "type": "ExternalEntity",
+                    "bounds": {
+                        "x": 650,
+                        "y": 50,
+                        "height": 50,
+                        "width": 100
+                    }
+                },
+                {
+                    "id": "3",
+                    "name": "WebApp Financiera",
+                    "type": "Process",
+                    "bounds": {
+                        "x": 250,
+                        "y": 100,
+                        "height": 60,
+                        "width": 150
+                    }
+                },
+                {
+                    "id": "4",
+                    "name": "Base de datos PostgreSQL",
+                    "type": "DataStore",
+                    "bounds": {
+                        "x": 250,
+                        "y": 250,
+                        "height": 50,
+                        "width": 150
+                    }
+                }
+            ],
+            "flows": [
+                {
+                    "source": "1",
+                    "target": "3",
+                    "description": "Solicitudes de autenticaci\u00f3n y simulaci\u00f3n"
+                },
+                {
+                    "source": "3",
+                    "target": "1",
+                    "description": "Resultados de simulaci\u00f3n, PDF, login response"
+                },
+                {
+                    "source": "3",
+                    "target": "2",
+                    "description": "Consulta de tasas de cambio UF, USD, EUR"
+                },
+                {
+                    "source": "2",
+                    "target": "3",
+                    "description": "Respuesta con tasas actualizadas"
+                },
+                {
+                    "source": "3",
+                    "target": "4",
+                    "description": "Guardar fichas de solicitud, usuarios, resultados"
+                },
+                {
+                    "source": "4",
+                    "target": "3",
+                    "description": "Consulta de datos de usuarios y solicitudes"
+                }
+            ]
+        }
+    }
+}
